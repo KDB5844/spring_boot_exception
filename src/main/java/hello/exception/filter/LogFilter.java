@@ -21,10 +21,10 @@ public class LogFilter implements Filter {
         String requestURI = httpRequest.getRequestURI();
         String uuid = UUID.randomUUID().toString();
         try {
-            log.info("REQUEST [{}][{}][{}]", uuid,
-                    request.getDispatcherType(), requestURI);
+            log.info("REQUEST [{}][{}][{}]", uuid, request.getDispatcherType(), requestURI);
             chain.doFilter(request, response);
         } catch (Exception e) {
+            log.info("exception! {}", e.getMessage());
             throw e;
         } finally {
             log.info("RESPONSE [{}][{}][{}]", uuid,

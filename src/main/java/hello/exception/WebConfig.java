@@ -14,10 +14,11 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Bean
     public FilterRegistrationBean logFilter() {
-        FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean();
+        FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
         filterRegistrationBean.setFilter(new LogFilter());
         filterRegistrationBean.setOrder(1);
         filterRegistrationBean.addUrlPatterns("/*");
+        //두 가지 경우에 사용 됨(Request, Error)
         filterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST, DispatcherType.ERROR);
         return filterRegistrationBean;
     }
