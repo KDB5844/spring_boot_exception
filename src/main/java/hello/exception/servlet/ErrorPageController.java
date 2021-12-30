@@ -47,7 +47,7 @@ public class ErrorPageController {
 
         HashMap<String, Object> result = new HashMap<>();
         Exception ex = (Exception) request.getAttribute(ERROR_EXCEPTION);
-        result.put("status", ex);
+        result.put("status", request.getAttribute(ERROR_STATUS_CODE));
         result.put("message", ex.getMessage());
 
         int statusCode = (Integer) request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
